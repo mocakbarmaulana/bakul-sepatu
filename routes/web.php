@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get("/admin", function() {return view('layouts.admin');});
+// Admin Rote
+Route::prefix('administrator')->middleware('auth')->group(function(){
+    Route::resource('kategori', 'App\http\Controllers\Admin\KategoriController');
+});

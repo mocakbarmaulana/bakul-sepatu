@@ -11,7 +11,6 @@
     <meta name="description"
         content="Xtreme Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Xtreme Admin Lite Template by WrapPixel</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("xtreme-admin/assets/") }}/images/favicon.png">
     <!-- Custom CSS -->
@@ -20,6 +19,7 @@
     {{-- FontAwesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         referrerpolicy="no-referrer" />
+    @yield('head')
 </head>
 
 <body>
@@ -71,7 +71,7 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <h1>Ini Container</h1>
+                @yield('konten')
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -79,10 +79,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center">
-                All Rights Reserved by Xtreme Admin. Designed and Developed by <a
-                    href="https://www.wrappixel.com">WrapPixel</a>.
-            </footer>
+            @include('layouts.module-admin.footer')
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -114,6 +111,7 @@
     {{-- <script src="{{ asset("xtreme-admin/assets/") }}/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js">
     </script> --}}
     {{-- <script src="{{ asset("xtreme-admin/dist/") }}/js/pages/dashboards/dashboard1.js"></script> --}}
+    @yield('js')
 </body>
 
 </html>

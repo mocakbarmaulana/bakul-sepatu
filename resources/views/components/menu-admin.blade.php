@@ -26,8 +26,20 @@
         </a>
     </li>
     @endforeach
+    <li class="sidebar-item">
+        <a class="sidebar-link logout" aria-expanded="false">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="hide-menu">Log out</span>
+        </a>
+    </li>
 </ul>
 
+{{-- Form Logout --}}
+<form action="{{route('logout')}}" method="POST" id="form-logout" style="display: none">
+    @csrf
+</form>
+
+{{-- Css Inline --}}
 <style>
     .sidebar-link {
         font-weight: 700;
@@ -47,3 +59,13 @@
         margin-left: 10px
     }
 </style>
+
+{{-- Script js --}}
+<script>
+    const logout = document.querySelector('.logout');
+    const formLogout = document.querySelector("#form-logout")
+
+    logout.addEventListener('click', () => {
+        formLogout.submit();
+    })
+</script>

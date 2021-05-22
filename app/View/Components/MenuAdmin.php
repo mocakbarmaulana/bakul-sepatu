@@ -11,6 +11,7 @@ class MenuAdmin extends Component
      *
      * @return void
      */
+    public $active;
     public function __construct()
     {
         //
@@ -55,5 +56,10 @@ class MenuAdmin extends Component
                 'link' => '#',
             ],
         ];
+    }
+
+    public function isActive($label)
+    {
+        // return $label ==
     }
 }
