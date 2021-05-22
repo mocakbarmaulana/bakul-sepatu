@@ -27,3 +27,8 @@ Route::prefix('administrator')->middleware('auth')->group(function(){
     Route::resource('kategori', 'App\http\Controllers\Admin\KategoriController');
     Route::resource('produk', 'App\http\Controllers\Admin\ProdukController');
 });
+
+// Frontend Route
+Route::get('/test', function() {
+    return view('layouts.app-demo');
+});
