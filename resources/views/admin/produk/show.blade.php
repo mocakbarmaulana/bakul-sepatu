@@ -6,6 +6,9 @@
 
 @section('konten')
 @include('utils.flash-message')
+<div class="button-back mb-3">
+    <a href="{{route('produk.index')}}" class="btn btn-info"><i class="mdi mdi-arrow-left-bold"></i> Back</a>
+</div>
 <div class="row">
     <div class="col-md-4 mb-3">
         <div class="card">
