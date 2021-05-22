@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->integer('price');
             $table->string('size');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
