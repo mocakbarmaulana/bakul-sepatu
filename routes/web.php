@@ -20,8 +20,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 // Admin Rote
 Route::prefix('administrator')->middleware('auth')->group(function(){
     Route::resource('kategori', 'App\http\Controllers\Admin\KategoriController');
@@ -29,9 +27,9 @@ Route::prefix('administrator')->middleware('auth')->group(function(){
 });
 
 // Frontend Route
-Route::get('/test', function() {
-    return view('layouts.app-demo');
-});
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'home'])->name('home');
+Route::get('/menu', [App\Http\Controllers\FrontendController::class, 'getMenu'])->name('menu');
+Route::get('/produk/{id}', [App\Http\Controllers\FrontendController::class, 'produkDetail'])->name('produkdetail');
 
 // Member Router
 Route::prefix('member')->group(function(){
