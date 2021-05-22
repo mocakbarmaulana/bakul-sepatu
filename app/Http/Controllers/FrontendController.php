@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Whistlist;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -24,7 +25,8 @@ class FrontendController extends Controller
     {
         $product = Product::find($id);
         $size = explode(',', $product->size);
+        $wishlist = Whistlist::where('product_id', $id)->where('member_id', auth('member')->id())->first();
 
-        return view('produk-detail', compact('product', 'size'));
+        return view('produk-detail', compact('product', 'size', 'wishlist'));
     }
 }

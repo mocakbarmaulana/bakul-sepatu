@@ -29,9 +29,22 @@
             </span>
             <br />
             <br />
-            <a class="button-cart" href="checkout.html">Add to cart</a> &nbsp;
-            &nbsp;
-            <a class="wishlist" href="">Add to wishlist</a>
+            <div class="box-button">
+                <a class="button-cart" href="checkout.html">Add to cart</a> &nbsp;
+                &nbsp;
+                {{-- Whislist --}}
+                @if ($wishlist)
+                <form action="{{route('member.rmwhislit', $wishlist->id)}}" method="POST">
+                    @csrf
+                    <button type="submit" class="wishlist">Remove from wishlist</button>
+                </form>
+                @else
+                <form action="{{route('member.setwhislit', $product->id)}}" method="POST">
+                    @csrf
+                    <button type="submit" class="wishlist">Add to wishlist</button>
+                </form>
+                @endif
+            </div>
         </div>
     </div>
 </section>
@@ -40,4 +53,19 @@
     <video src="{{asset('asset/img/frontend/videoplayback.mp4')}}" type="video/mp4" controls controlsList="nodownload"
         poster="../Images/nike-zoom.gif" style="display:block; margin:30px auto; width: 70%"></video>
 </section>
+
+{{-- style --}}
+<style>
+    .box-button {
+        display: flex;
+        align-items: center;
+    }
+
+    .wishlist {
+        background: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+</style>
 @endsection

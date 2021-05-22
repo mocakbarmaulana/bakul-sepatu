@@ -29,7 +29,7 @@ Route::prefix('administrator')->middleware('auth')->group(function(){
 // Frontend Route
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'home'])->name('home');
 Route::get('/menu', [App\Http\Controllers\FrontendController::class, 'getMenu'])->name('menu');
-Route::get('/produk/{id}', [App\Http\Controllers\FrontendController::class, 'produkDetail'])->name('produkdetail');
+Route::middleware('member')->get('/produk/{id}', [App\Http\Controllers\FrontendController::class, 'produkDetail'])->name('produkdetail');
 
 // Member Router
 Route::prefix('member')->group(function(){
@@ -42,7 +42,6 @@ Route::prefix('member')->group(function(){
 
 // Membeer Router dengan middleware
 Route::prefix('member')->middleware('member')->group(function(){
-    Route::get('/test', function() {
-        return "Hello World";
-    })->name('member.test');
+    Route::post('/whislist/add/{id}', [App\Http\Controllers\Member\MemberController::class, 'setWhislist'])->name('member.setwhislit');
+    Route::post('/whislist/remove/{id}', [App\Http\Controllers\Member\MemberController::class, 'removeWhislist'])->name('member.rmwhislit');
 });

@@ -13,6 +13,8 @@ class Member extends Authenticable
 
     protected $guarded = [];
 
+    protected $hidden = ['password'];
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
