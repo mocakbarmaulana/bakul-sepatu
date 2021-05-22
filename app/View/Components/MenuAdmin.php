@@ -12,9 +12,9 @@ class MenuAdmin extends Component
      * @return void
      */
     public $active;
-    public function __construct()
+    public function __construct($active)
     {
-        //
+        $this->active = $active;
     }
 
     /**
@@ -60,6 +60,6 @@ class MenuAdmin extends Component
 
     public function isActive($label)
     {
-        // return $label ==
+        return $label == $this->active;
     }
 }

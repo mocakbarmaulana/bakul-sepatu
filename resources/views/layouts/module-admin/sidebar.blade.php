@@ -3,7 +3,7 @@
     <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
-            <x-menu-admin />
+            <x-menu-admin :active="$active" />
         </nav>
         <!-- End Sidebar navigation -->
     </div>

@@ -12,22 +12,17 @@
         <!-- End User Profile-->
     </li>
     <!-- User Profile-->
-    <li class="sidebar-item">
-        <a class="sidebar-link active waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
-            <i class="fas fa-user"></i>
-            <span class="hide-menu">Testing</span>
-        </a>
-    </li>
     @foreach ($Menus as $menu)
     <li class="sidebar-item">
-        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{$menu['link']}}" aria-expanded="false">
+        <a class="sidebar-link {{$isActive($menu['label']) ? 'active' : null}}" href="{{$menu['link']}}"
+            aria-expanded="false">
             <i class="{{$menu['icon']}}"></i>
             <span class="hide-menu">{{$menu['label']}}</span>
         </a>
     </li>
     @endforeach
     <li class="sidebar-item">
-        <a class="sidebar-link logout" aria-expanded="false">
+        <a class="sidebar-link logout">
             <i class="fas fa-sign-out-alt"></i>
             <span class="hide-menu">Log out</span>
         </a>
