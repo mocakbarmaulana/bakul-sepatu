@@ -10,4 +10,10 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    // Relations
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

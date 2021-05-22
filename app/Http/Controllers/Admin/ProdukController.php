@@ -75,7 +75,11 @@ class ProdukController extends Controller
      */
     public function show($id)
     {
-        //
+        $active = 'Produk';
+        $product = Product::find($id);
+        $categories = Category::orderBy('name', 'ASC')->get();
+
+        return view('admin.produk.show', compact('active', 'product', 'categories'));
     }
 
     /**
@@ -86,7 +90,7 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -98,7 +102,29 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:100|unique:products,name,'.$id,
+            'description' => 'required|string',
+            'category_id' => 'required|integer',
+            'size' => 'required|string|max:100',
+            'price' => 'required|integer',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+        ]);
+
+
+        $product = Product::find($id);
+        $imageName = Helper::uploadImage($request->image, $product->images, 'products');
+
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->category_id = $request->category_id;
+        $product->size = $request->size;
+        $product->price = $request->price;
+        $product->images = $imageName;
+        $product->save();
+
+        return redirect()->back()->with('success', 'Produk berhasil diperbaharui');
+
     }
 
     /**

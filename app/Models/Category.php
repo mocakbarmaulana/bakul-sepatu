@@ -13,7 +13,14 @@ class Category extends Model
     protected $guarded = [];
 
     // Mutator
-    public function setSlugAttribute($value){
+    public function setSlugAttribute($value)
+    {
         $this->attributes['slug'] = Str::slug($value);
+    }
+
+    // Relations
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }
