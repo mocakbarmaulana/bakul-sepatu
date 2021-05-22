@@ -19,6 +19,9 @@
     {{-- FontAwesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         referrerpolicy="no-referrer" />
+
+    {{-- Jquery --}}
+    </script>
     @yield('head')
 </head>
 
@@ -111,6 +114,11 @@
     {{-- <script src="{{ asset("xtreme-admin/assets/") }}/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js">
     </script> --}}
     {{-- <script src="{{ asset("xtreme-admin/dist/") }}/js/pages/dashboards/dashboard1.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
     @yield('js')
 </body>
 
