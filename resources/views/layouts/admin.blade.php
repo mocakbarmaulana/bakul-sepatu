@@ -12,13 +12,14 @@
         content="Xtreme Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
     <title>Xtreme Admin Lite Template by WrapPixel</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("xtreme-admin/assets/") }}/images/favicon.png">
     <!-- Custom CSS -->
-    {{-- <link href="{{ asset("xtreme-admin/assets/") }}/libs/chartist/dist/chartist.min.css" rel="stylesheet"> --}}
-    <!-- Custom CSS -->
     <link href="{{ asset("xtreme-admin/dist/") }}/css/style.min.css" rel="stylesheet">
+
+    {{-- FontAwesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        referrerpolicy="no-referrer" />
 </head>
 
 <body>
