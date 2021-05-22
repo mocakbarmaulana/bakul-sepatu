@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Size</label>
+                        <label>Ukuran</label>
                         @error('size')
                         <small class="text-danger d-block">{{$message}}</small>
                         @enderror
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Price</label>
+                        <label>Harga</label>
                         @error('price')
                         <small class="text-danger d-block">{{$message}}</small>
                         @enderror
@@ -96,7 +96,7 @@
 
     </div>
     <div class="col-md-8 mb-3">
-
+        @include('admin.produk.tabel')
     </div>
 </div>
 
@@ -108,12 +108,14 @@
 <script>
     CKEDITOR.replace('editor');
 
+    // Event listener apakah ada perubahan pada input uploa dimage
     $("#uploadImage").change(function(){
         const name = $(this.files[0])[0].name;
         console.log(name)
         readUrlImage($(this));
     });
 
+    // Function menampilkan preview upload image
     const readUrlImage = (input) => {
         let reader = new FileReader();
         console.log(reader);
@@ -122,5 +124,11 @@
         }
         reader.readAsDataURL(input[0].files[0]);
     }
+
+    // Event Listener button hapus produk
+    $(".btnHapusProduk").on("click", function(){
+        const id = $(this)[0].dataset.idproduk;
+        $(".formHapusProduk").attr('action', `/administrator/produk/${id}`)
+    });
 </script>
 @endsection

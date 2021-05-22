@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
@@ -19,8 +20,9 @@ class ProdukController extends Controller
     {
         $active = 'Produk';
         $categories = Category::orderBy('name', 'ASC')->get();
+        $products = Product::orderBy('created_at', 'DESC')->paginate(10);
 
-        return view('admin.produk.index', compact('active', 'categories'));
+        return view('admin.produk.index', compact('active', 'categories', 'products'));
     }
 
     /**
@@ -107,6 +109,10 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        Storage::delete('/public/assets/images/products/'.$product->images);
+        $product->delete();
+
+        return redirect()->back()->with('success', 'Produk berhasil dihapus');
     }
 }
