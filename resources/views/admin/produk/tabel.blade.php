@@ -37,7 +37,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td>Kosong</td>
+                    <td colspan="4" class="text-center">Tidak ada produk</td>
                 </tr>
                 @endforelse
             </tbody>
@@ -49,6 +49,7 @@
     </div>
 </div>
 
+{{-- Modal Hapus Produk --}}
 <div class="modal fade" id="modalHapusProduk" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

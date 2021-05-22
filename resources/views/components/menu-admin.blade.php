@@ -22,7 +22,7 @@
     </li>
     @endforeach
     <li class="sidebar-item">
-        <a class="sidebar-link logout">
+        <a href="#logout" class="sidebar-link logout">
             <i class="fas fa-sign-out-alt"></i>
             <span class="hide-menu">Log out</span>
         </a>
