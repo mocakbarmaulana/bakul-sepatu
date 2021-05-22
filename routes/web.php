@@ -32,3 +32,19 @@ Route::prefix('administrator')->middleware('auth')->group(function(){
 Route::get('/test', function() {
     return view('layouts.app-demo');
 });
+
+// Member Router
+Route::prefix('member')->group(function(){
+    Route::get('/register', [App\Http\Controllers\Member\LoginMemberController::class, 'getRegister'])->name('member.register');
+    Route::get('/login', [App\Http\Controllers\Member\LoginMemberController::class, 'getLogin'])->name('member.login');
+    Route::post('/register', [App\Http\Controllers\Member\LoginMemberController::class, 'setRegister'])->name('member.setregister');
+    Route::post('/login', [App\Http\Controllers\Member\LoginMemberController::class, 'setLogin'])->name('member.setlogin');
+});
+
+
+// Membeer Router dengan middleware
+Route::prefix('member')->middleware('member')->group(function(){
+    Route::get('/test', function() {
+        return "Hello World";
+    })->name('member.test');
+});
