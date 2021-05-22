@@ -28,39 +28,57 @@
 
 <body>
 
-    @include('layouts.module-main.navbar')
+    <header id="home">
+        <nav>
+            <ul>
+                <li class="primary-nav">
+                    <img src=" {{asset('asset/img/frontend/img-DS.png')}}" alt="logo" />
+                    <a href="/">BakulSepatu</a>
+                </li>
+                <li class="secondary-nav">
+                    <a href="#">
+                        <i class="fas fa-shopping-cart"></i> CART
+                    </a>
+                </li>
+                <li class="secondary-nav"><a href="#">Sepatu Formal</a></li>
+                <li class="secondary-nav"><a href="#">Sepatu Slip On</a></li>
+                <li class="secondary-nav"><a href="#">Sepatu Olahraga</a></li>
+                <li class="secondary-nav"><a href="#">About</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="pxtext">
+            <span class="border">
+                Nike Air Jordan
+            </span>
+            <p><a href="HTML/men.html">Shop Now</a></p>
+        </div>
+    </header>
     <section>
         <div class="row" style="width: 80%;margin: 0 auto;">
-
             <h2>Best Sellers</h2>
             <div class="row" style="width: 80%; margin: 0 auto;">
+                @forelse ($products as $product)
                 <figure class="item">
-                    <a href="HTML/info.html">
-                        <img src="{{ asset("asset/img/frontend/") }}/img-Nike1.jpg" alt="" width="100%" />
-                        <figcaption>Nike Run +</figcaption>
+                    <a href="{{route('produkdetail', $product->id)}}">
+                        <img src="{{asset('storage/assets/images/products/'.$product->images)}}" alt="img-produk"
+                            height="125px" width="200px" class="img-produk-item" />
+                        <figcaption>{{$product->name}}</figcaption>
                     </a>
                 </figure>
-                <figure class="item">
-                    <a href="HTML/info.html">
-                        <img src="{{ asset("asset/img/frontend/") }}/img-Nike3.jpg" alt="" width="100%" />
-                        <figcaption>Nike Air Blue</figcaption>
-                    </a>
-                </figure>
-                <figure class="item">
-                    <a href="HTML/info.html">
-                        <img src="{{ asset("asset/img/frontend/") }}/img-Nike5.jpg" width="100%" />
-                        <figcaption>Casual Nike</figcaption>
-                    </a>
-                </figure>
-                <figure class="item">
-                    <a href="HTML/info.html">
-                        <img src="{{ asset("asset/img/frontend/") }}/img-Nike10.jpg" alt="" width="100%" />
-                        <figcaption>Nike Air Orange</figcaption>
-                    </a>
-                </figure>
+                @empty
+                <p>Tidak ada data</p>
+                @endforelse
             </div>
     </section>
     @include('layouts.module-main.footer')
+
+    <style>
+        .img-produk-item {
+            object-fit: contain;
+            object-position: center
+        }
+    </style>
 </body>
 
 </html>

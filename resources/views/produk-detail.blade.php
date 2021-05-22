@@ -10,7 +10,7 @@
 @section('konten')
 <section>
     <div class="row">
-        <div class="col1">
+        <div class="col1" style="text-align: center">
             <img src="{{asset('storage/assets/images/products/'.$product->images)}}" alt="" srcset="" />
         </div>
         <div class="col2">

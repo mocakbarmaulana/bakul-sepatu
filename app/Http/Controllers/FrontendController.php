@@ -10,7 +10,8 @@ class FrontendController extends Controller
 
     public function home()
     {
-        return view('home');
+        $products = Product::inRandomOrder()->limit(4)->get();
+        return view('home', compact('products'));
     }
 
     public function getMenu()
