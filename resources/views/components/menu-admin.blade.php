@@ -14,7 +14,7 @@
     <!-- User Profile-->
     @foreach ($Menus as $menu)
     <li class="sidebar-item">
-        <a class="sidebar-link {{$isActive($menu['label']) ? 'active' : null}}" href="{{$menu['link']}}"
+        <a class="sidebar-link {{$isActive($menu['label']) ? 'active' : null}}" href="/administrator/{{$menu['link']}}"
             aria-expanded="false">
             <i class="{{$menu['icon']}}"></i>
             <span class="hide-menu">{{$menu['label']}}</span>

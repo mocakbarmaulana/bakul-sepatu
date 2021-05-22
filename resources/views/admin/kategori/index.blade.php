@@ -5,7 +5,9 @@
 @endsection
 
 @section('konten')
+
 @include('utils.flash-message')
+
 <div class="row">
     <div class="col-md-4 mb-3">
         <div class="card">
@@ -23,6 +25,10 @@
                     @csrf
                     <div class="form-group">
                         <label>Nama Kategori</label>
+                        @error('name')
+                        <br>
+                        <small class="text-danger">*{{$message}}</small>
+                        @enderror
                         <input type="text" class="form-control" name="name" placeholder="Sepatu boots" required>
                     </div>
 

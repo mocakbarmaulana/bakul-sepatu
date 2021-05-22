@@ -25,4 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Admin Rote
 Route::prefix('administrator')->middleware('auth')->group(function(){
     Route::resource('kategori', 'App\http\Controllers\Admin\KategoriController');
+    Route::resource('produk', 'App\http\Controllers\Admin\ProdukController');
 });

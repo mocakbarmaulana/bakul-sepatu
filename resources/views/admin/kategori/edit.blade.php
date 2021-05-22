@@ -24,6 +24,10 @@
                     @method('put')
                     <div class="form-group">
                         <label>Nama Kategori</label>
+                        @error('name')
+                        <br>
+                        <small class="text-danger">{{$message}}</small>
+                        @enderror
                         <input type="text" class="form-control" name="name" value="{{$category->name}}"
                             placeholder="Sepatu boots" required>
                     </div>

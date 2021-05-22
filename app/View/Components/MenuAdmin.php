@@ -36,12 +36,12 @@ class MenuAdmin extends Component
             [
                 'label' => 'Kategori',
                 'icon' => 'fas fa-th-list',
-                'link' => '#',
+                'link' => 'kategori',
             ],
             [
                 'label' => 'Produk',
                 'icon' => 'fas fa-tags',
-                'link' => '#',
+                'link' => 'produk',
             ],
             [
                 'label' => 'Pengguna',
