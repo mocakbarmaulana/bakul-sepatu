@@ -110,9 +110,15 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
 
-        return redirect()->back()->with('success', 'Kategori berhasil dihapus');
+        $category = Category::withCount('product')->find($id);
+
+        if($category->product_count === 0) {
+            $category->delete();
+            return redirect()->back()->with('success', 'Kategori berhasil dihapus');
+        }
+
+        return redirect()->back()->with('error', 'Kategori sedang digunakan oleh produk lain');
     }
 
 }
