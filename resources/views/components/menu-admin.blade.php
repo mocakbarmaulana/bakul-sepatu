@@ -6,7 +6,7 @@
             <div class="user-pic"><img src="{{ asset("xtreme-admin/assets/") }}/images/users/1.jpg" alt="users"
                     class="rounded-circle" width="40" /></div>
             <div class="user-content hide-menu m-l-10 d-flex align-items-center">
-                <h5 class="m-b-0 user-name font-medium">Steave Jobs</h5>
+                <h5 class="m-b-0 user-name font-medium">{{$name}}</h5>
             </div>
         </div>
         <!-- End User Profile-->
@@ -27,6 +27,7 @@
             <span class="hide-menu">Log out</span>
         </a>
     </li>
+
 </ul>
 
 {{-- Form Logout --}}

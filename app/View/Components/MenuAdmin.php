@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class MenuAdmin extends Component
@@ -24,7 +25,9 @@ class MenuAdmin extends Component
      */
     public function render()
     {
-        return view('components.menu-admin');
+        $name = Auth::user()->name;
+
+        return view('components.menu-admin', compact('name'));
     }
 
     public function Menus()
