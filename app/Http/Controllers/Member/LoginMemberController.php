@@ -25,7 +25,7 @@ class LoginMemberController extends Controller
         $auth['status'] = 1;
 
         if (Auth::guard('member')->attempt($auth)) {
-            return redirect()->intended(route('member.test'));
+            return redirect()->intended(route('home'));
         }
 
         return redirect()->back()->with('error', 'Email / password tidak cocok');

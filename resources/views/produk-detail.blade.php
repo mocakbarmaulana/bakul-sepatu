@@ -30,8 +30,12 @@
             <br />
             <br />
             <div class="box-button">
-                <a class="button-cart" href="checkout.html">Add to cart</a> &nbsp;
-                &nbsp;
+                <form action="{{route('member.addtocart')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                    <input type="hidden" name="qty" value="1">
+                    <button type="submit" class="button-cart button">Add to cart</button>
+                </form>
                 {{-- Whislist --}}
                 @if ($wishlist)
                 <form action="{{route('member.rmwhislit', $wishlist->id)}}" method="POST">
@@ -41,7 +45,7 @@
                 @else
                 <form action="{{route('member.setwhislit', $product->id)}}" method="POST">
                     @csrf
-                    <button type="submit" class="wishlist">Add to wishlist</button>
+                    <button type="submit" class="wishlist button">Add to wishlist</button>
                 </form>
                 @endif
             </div>
@@ -61,10 +65,18 @@
         align-items: center;
     }
 
+    .box-button form:nth-child(1) {
+        margin-right: 20px;
+    }
+
+    .button {
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+    }
+
     .wishlist {
         background: transparent;
-        border: none;
-        outline: none;
         cursor: pointer;
     }
 </style>
