@@ -19,6 +19,15 @@
 
     <h1>Ini Invoice</h1>
 
+    @if ($errors->any())
+    <div class="container">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Terdapat error dalam memasukan field konfirmasi pembayaran
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    @endif
+
     <div class="invoice-container">
         <div class="invoice-info">
             <div class="container">
@@ -117,42 +126,71 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col d-flex flex-column">
-                            <div class="image-preview text-center">
-                                <img src="{{asset('asset/img/404image.jpg')}}" alt="">
+                    <form action="{{route('member.setpayment')}}" class="form-payment" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col d-flex flex-column">
+                                <div class="image-preview text-center">
+                                    <img src="{{asset('asset/img/404image.jpg')}}" height="280px" width="100%"
+                                        class="image-preview" alt="img-preview" style="object-fit: contain">
+                                </div>
+                                <div class="form-group mt-auto mb-3">
+                                    @error('image')
+                                    <small class="text-danger d-block">*{{$message}}</small>
+                                    @enderror
+                                    <input type="file" name="image" id="uploadImage" class="form-control">
+                                </div>
                             </div>
-                            <div class="form-group mt-auto mb-3">
-                                <input type="file" name="image" class="form-control">
+                            <div class="col">
+                                <div class="form-group mb-3">
+                                    <label>Nama pengirim</label>
+                                    @error('name')
+                                    <small class="text-danger d-block">*{{$message}}</small>
+                                    @enderror
+                                    <input type="text" name="name" class="form-control" value="{{old('name')}}"
+                                        placeholder="Bambang">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Nama Bank</label>
+                                    @error('name_bank')
+                                    <small class="text-danger d-block">*{{$message}}</small>
+                                    @enderror
+                                    <input type="text" name="name_bank" class="form-control"
+                                        value="{{old('name_bank')}}" placeholder="BCA">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>No. Rekening Bank</label>
+                                    @error('number_bank')
+                                    <small class="text-danger d-block">*{{$message}}</small>
+                                    @enderror
+                                    <input type="text" name="number_bank" class="form-control"
+                                        value="{{old('number_bank')}}" placeholder="3331112498">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Tanggal Transfer</label>
+                                    @error('date_transfer')
+                                    <small class="text-danger d-block">*{{$message}}</small>
+                                    @enderror
+                                    <input type="date" name="date_transfer" class="form-control"
+                                        value="{{old('date_transfer')}}" placeholder="19-08-2021">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Nominal Transfer</label>
+                                    @error('total')
+                                    <small class="text-danger d-block">*{{$message}}</small>
+                                    @enderror
+                                    <input type="text" name="total" class="form-control" value="{{old('total')}}"
+                                        placeholder="IDR.1200000">
+                                </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group mb-3">
-                                <label>Nama pengirim</label>
-                                <input type="text" name="name" class="form-control" placeholder="Bambang">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label>Nama Bank</label>
-                                <input type="text" name="name" class="form-control" placeholder="BCA">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label>No. Rekening Bank</label>
-                                <input type="text" name="name" class="form-control" placeholder="3331112498">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label>Tanggal Transfer</label>
-                                <input type="date" name="name" class="form-control" placeholder="19-08-2021">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label>Nominal Transfer</label>
-                                <input type="text" name="name" class="form-control" placeholder="IDR.1200000">
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button type="button" class="btn btn-primary" onclick="submitConfirmPayment()">Konfimasi Bukti
+                        Pembayaran</button>
                 </div>
             </div>
         </div>
@@ -162,6 +200,30 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+    </script>
+
+    {{-- Jqyer --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer">
+    </script>
+
+    <script>
+        const submitConfirmPayment = () => {
+            document.querySelector(".form-payment").submit();
+        }
+
+        $("#uploadImage").change(function(){
+            const name = $(this.files[0])[0].name;
+            readUrlImage($(this));
+        });
+
+        // Function menampilkan preview upload image
+        const readUrlImage = (input) => {
+            let reader = new FileReader();
+            reader.onload = function(e){
+            $(".image-preview").attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input[0].files[0]);
+        }
     </script>
 
 </body>

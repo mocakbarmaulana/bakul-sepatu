@@ -115,4 +115,19 @@ class MemberController extends Controller
 
         return view('member.invoice', compact('order'));
     }
+
+    // Konfirmasi Bukti Pembayaran
+    public function confirmPayment(Request $request)
+    {
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:1048',
+            'name' => 'required|string|max:100',
+            'name_bank' => 'required|string|max:50',
+            'number_bank' => 'required|integer',
+            'date_transfer' => 'required|date',
+            'total' => 'required|integer',
+        ]);
+
+        dd($request);
+    }
 }
