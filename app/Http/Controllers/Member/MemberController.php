@@ -103,9 +103,7 @@ class MemberController extends Controller
 
     public function getInvoice($invoice)
     {
-        $order = Order::where('invoice', $invoice)->first();
-
-        dd($order);
+        $order = Order::with('order_details')->where('invoice', $invoice)->first();
 
         return view('member.invoice', compact('order'));
     }
