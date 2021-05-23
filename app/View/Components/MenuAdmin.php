@@ -51,7 +51,7 @@ class MenuAdmin extends Component
             [
                 'label' => 'Pesanan',
                 'icon' => 'fas fa-shopping-basket',
-                'link' => '#',
+                'link' => 'pesanan',
             ],
             [
                 'label' => 'Pembayaran',
