@@ -32,6 +32,7 @@ class CartController extends Controller
         if($carts && array_key_exists($request->product_id, $carts)){
             // update qty berdasarkan produk id yand dijadikan key array assoc
             $carts[$request->product_id]['qty'] += $request->qty;
+            $carts[$request->product_id]['product_size'] = $request->size;
         } else {
             // Jika cart kosong dan belum ada product id
             $product = Product::find($request->product_id);
