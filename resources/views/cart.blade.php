@@ -22,6 +22,7 @@
                     </div>
                     <div class="title-list">
                         <h3>{{$cart['product_name']}}</h3>
+                        <b>(Size : {{$cart['product_size']}})</b>
                     </div>
                     <div class="price-list">
                         <p>IDR.{{number_format($cart['product_price'])}}</p>
@@ -127,6 +128,14 @@
 
     .title-list {
         width: 300px;
+    }
+
+    .title-list h3 {
+        margin-bottom: 0;
+    }
+
+    .title-list b {
+        opacity: 0.5;
     }
 
     .price-list {

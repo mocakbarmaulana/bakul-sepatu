@@ -32,4 +32,9 @@ class MemberController extends Controller
 
         return redirect()->back();
     }
+
+    public function setCheckout(Request $request)
+    {
+
+    }
 }

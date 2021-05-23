@@ -20,7 +20,7 @@
 
             <span>
                 <h3>Size</h3>
-                <select name="" id="">
+                <select name="size" id="option-size">
                     <option value="" selected disabled>Please select an option</option>
                     @foreach ($size as $row)
                     <option value="{{$row}}">{{$row}}</option>
@@ -34,6 +34,7 @@
                     @csrf
                     <input type="hidden" name="product_id" value="{{$product->id}}">
                     <input type="hidden" name="qty" value="1">
+                    <input type="hidden" name="size" id="size-product">
                     <button type="submit" class="button-cart button">Add to cart</button>
                 </form>
                 {{-- Whislist --}}
@@ -55,7 +56,8 @@
 <section class="video">
     <h1 style="text-align: center">Video</h1>
     <video src="{{asset('asset/img/frontend/videoplayback.mp4')}}" type="video/mp4" controls controlsList="nodownload"
-        poster="../Images/nike-zoom.gif" style="display:block; margin:30px auto; width: 70%"></video>
+        poster="{{asset('asset/img/frontend/nike-zoom.gif')}}"
+        style="display:block; margin:30px auto; width: 70%"></video>
 </section>
 
 {{-- style --}}
@@ -80,4 +82,14 @@
         cursor: pointer;
     }
 </style>
+@endsection
+
+@section('js')
+<script>
+    const optionSize = document.getElementById("option-size");
+
+    $("#option-size").on("change", function(){
+        $("#size-product").val(this.value);
+    })
+</script>
 @endsection

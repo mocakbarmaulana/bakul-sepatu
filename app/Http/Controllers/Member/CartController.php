@@ -19,7 +19,8 @@ class CartController extends Controller
     {
         $this->validate($request, [
             'product_id' => 'required|exists:products,id',
-            'qty' => 'required|integer'
+            'qty' => 'required|integer',
+            'size' => 'required|string',
         ]);
 
 
@@ -41,6 +42,7 @@ class CartController extends Controller
                 'product_name' => $product->name,
                 'product_price' => $product->price,
                 'product_image' => $product->images,
+                'product_size' => $request->size,
             ];
         }
 
