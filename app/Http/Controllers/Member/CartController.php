@@ -50,4 +50,53 @@ class CartController extends Controller
         // Kembali ke halaman sebelumnya dengan membawa cookie
         return redirect()->back()->cookie($cookie)->with('info', 'Product berhasil ditambahkan ke cart');
     }
+
+    public function decreaseCart($id)
+    {
+        $carts = $this->getCarts();
+
+        $carts[$id]['qty'] -= 1;
+
+        if($carts[$id]['qty'] == 0 ){
+            unset($carts[$id]);
+        };
+
+        $cookie = cookie('bakulsepatu', json_encode($carts), 2880);
+
+        return redirect()->back()->cookie($cookie);
+    }
+
+    public function increaseCart($id)
+    {
+        $carts = $this->getCarts();
+
+        $carts[$id]['qty'] += 1;
+
+        $cookie = cookie('bakulsepatu', json_encode($carts), 2880);
+
+        return redirect()->back()->cookie($cookie);
+    }
+
+    public function deleteCart($id)
+    {
+        $carts = $this->getCarts();
+
+        unset($carts[$id]);
+
+        $cookie = cookie('bakulsepatu', json_encode($carts), 2880);
+
+        return redirect()->back()->cookie($cookie);
+    }
+
+    public function showCart()
+    {
+        $carts = $this->getCarts();
+
+        // UBAH ARRAY MENJADI COLLECTION, KEMUDIAN GUNAKAN METHOD SUM UNTUK MENGHITUNG SUBTOTAL
+        $subtotal = collect($carts)->sum(function($q) {
+            return $q['qty'] * $q['product_price']; //SUBTOTAL TERDIRI DARI QTY * PRICE
+        });
+
+        return view('cart', compact('carts', 'subtotal'));
+    }
 }

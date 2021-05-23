@@ -6,7 +6,7 @@
                 <a href="/">BakulSepatu</a>
             </li>
             <li class="secondary-nav">
-                <a href="#">
+                <a href="{{route('showcart')}}">
                     <i class="fas fa-shopping-cart"></i> CART
                 </a>
             </li>

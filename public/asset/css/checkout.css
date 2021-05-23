@@ -1,11 +1,12 @@
-body, html {
+body,
+html {
     height: 100%;
     margin: 0;
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
     max-width: 100%;
 }
 
-nav>ul>li {
+nav > ul > li {
     display: inline-block;
 }
 
@@ -27,17 +28,17 @@ nav::after {
     font-size: 20px;
 }
 
-.primary-nav>a {
+.primary-nav > a {
     letter-spacing: 5px;
 }
 
-.primary-nav>img {
+.primary-nav > img {
     width: 30px;
 }
 
-.secondary-nav>a {
+.secondary-nav > a {
     letter-spacing: 1px;
-    color: rgba(0, 0, 0, .6);
+    color: rgba(0, 0, 0, 0.6);
     font-size: 15px;
     letter-spacing: 3px;
 }
@@ -49,17 +50,17 @@ nav::after {
     font-size: 20px;
 }
 
-nav>ul>li>a {
+nav > ul > li > a {
     color: black;
     font-family: helvetica;
     text-decoration: none;
 }
 
-nav>ul>li>a:hover {
-    color: #CB4335;
+nav > ul > li > a:hover {
+    color: #cb4335;
 }
 
-section>h1 {
+section > h1 {
     font-size: 60px;
     margin: 20px 0 0 35px;
 }
@@ -69,12 +70,12 @@ section>h1 {
     margin: 0 60px 0 60px;
 }
 
-.row>.column {
-    width: 70%
+.row > .column {
+    width: 70%;
 }
 
-.row>.column2 {
-    width: 30%
+.row > .column2 {
+    width: 30%;
 }
 
 .cart-item {
@@ -85,9 +86,9 @@ section>h1 {
     justify-content: space-around;
 }
 
-img {
+/* img {
     width: 10%;
-}
+} */
 
 input {
     font-weight: bold;
@@ -118,7 +119,7 @@ input {
     flex-direction: column;
 }
 
-.buttons>a {
+.buttons > a {
     text-decoration: none;
 }
 
@@ -148,5 +149,5 @@ input {
 }
 
 .remove:hover {
-    color: #CB4335;
+    color: #cb4335;
 }

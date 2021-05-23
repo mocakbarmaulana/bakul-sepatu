@@ -13,7 +13,7 @@
     {{-- Google Font --}}
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="{{asset('asset/js/preloader.js')}}">
+    <link rel="stylesheet" href="{{asset('asset/css/preloader.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css/navbar.css')}}">
     @yield('head')
 </head>

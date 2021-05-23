@@ -29,7 +29,13 @@ Route::prefix('administrator')->middleware('auth')->group(function(){
 // Frontend Route
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'home'])->name('home');
 Route::get('/menu', [App\Http\Controllers\FrontendController::class, 'getMenu'])->name('menu');
-Route::middleware('member')->get('/produk/{id}', [App\Http\Controllers\FrontendController::class, 'produkDetail'])->name('produkdetail');
+Route::middleware('member')->group(function(){
+    Route::get('/produk/{id}', [App\Http\Controllers\FrontendController::class, 'produkDetail'])->name('produkdetail');
+    Route::get('/cart', [App\Http\Controllers\Member\CartController::class, 'showCart'])->name('showcart');
+    Route::post('/cart/decrease/{id}', [App\Http\Controllers\Member\CartController::class, 'decreaseCart'])->name('cart.decrease');
+    Route::post('/cart/increase/{id}', [App\Http\Controllers\Member\CartController::class, 'increaseCart'])->name('cart.increase');
+    Route::post('/cart/delete/{id}', [App\Http\Controllers\Member\CartController::class, 'deleteCart'])->name('cart.delete');
+});
 
 // Member Router
 Route::prefix('member')->group(function(){
