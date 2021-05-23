@@ -51,5 +51,6 @@ Route::prefix('member')->middleware('member')->group(function(){
     Route::post('/whislist/add/{id}', [App\Http\Controllers\Member\MemberController::class, 'setWhislist'])->name('member.setwhislit');
     Route::post('/whislist/remove/{id}', [App\Http\Controllers\Member\MemberController::class, 'removeWhislist'])->name('member.rmwhislit');
     Route::post('/cart/add', [App\Http\Controllers\Member\CartController::class, 'addToCart'])->name('member.addtocart');
-    Route::post('/checkout', [App\Http\Controllers\Member\CartController::class, 'setCheckout'])->name('member.setcheckout');
+    Route::post('/checkout', [App\Http\Controllers\Member\MemberController::class, 'setCheckout'])->name('member.setcheckout');
+    Route::get('/invoice/{invoice}', [App\Http\Controllers\Member\MemberController::class, 'getInvoice'])->name('member.invoice');
 });

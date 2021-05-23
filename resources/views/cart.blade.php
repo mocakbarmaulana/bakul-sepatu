@@ -47,7 +47,9 @@
             @endforelse
         </div>
         <div class="column2">
-            <form action="#" method="POST">
+            <form action="{{route('member.setcheckout')}}" method="POST">
+                @csrf
+                <input type="hidden" name="total" value="{{$subtotal}}">
                 <h3>Cart Totals</h3>
                 <div class="row1">
                     <div class="col">
@@ -66,15 +68,18 @@
                 <div class="row-box-user">
                     <div class="input-box-user">
                         <h5 class="title-input">Nama Penerima</h5>
-                        <input type="text" class="input-box">
+                        <input name="name" type="text" class="input-box" value="{{old('name')}}">
                     </div>
                     <div class="input-box-user">
                         <h5 class="title-input">Alamat Lengkap Penerima</h5>
-                        <textarea class="input-box" style="height: 100px"></textarea>
+                        <textarea name="address" class="input-box" style="height: 100px">{{old('address')}}</textarea>
                     </div>
                     <div class="input-box-user">
                         <h5 class="title-input">Nomor Handphone Penerima</h5>
-                        <input type="text" class="input-box">
+                        @error('number_phone')
+                        <small style="color: crimson">Nomor handphone haruslah yang benar</small>
+                        @enderror
+                        <input name="number_phone" type="text" class="input-box" value="{{old('number_phone')}}">
                     </div>
                 </div>
                 <div class="row-total">
