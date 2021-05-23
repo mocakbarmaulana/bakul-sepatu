@@ -135,10 +135,14 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        Storage::delete('/public/assets/images/products/'.$product->images);
-        $product->delete();
+        $product = Product::withCount('order_details')->find($id);
 
-        return redirect()->back()->with('success', 'Produk berhasil dihapus');
+        if($product->order_details_count === 0){
+            Storage::delete('/public/assets/images/products/'.$product->images);
+            $product->delete();
+            return redirect()->back()->with('success', 'Produk berhasil dihapus');
+        }
+
+        return redirect()->back()->with('error', 'Produk sedang digunakan');
     }
 }
