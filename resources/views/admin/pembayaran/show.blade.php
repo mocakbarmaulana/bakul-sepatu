@@ -52,11 +52,13 @@
                             </div>
                         </li>
                     </ol>
+                    @if ($payment->status === 0)
                     <form action="{{route('pembayaran.update', $payment->id)}}" method="POST">
                         @csrf
                         @method('put')
                         <button type="submit" class="btn btn-success w-100 text-white">Konfirmasi pembayaran</button>
                     </form>
+                    @endif
                     <a href="{{route('pesanan.show', $payment->order->id)}}"
                         class="btn btn-primary w-100 text-white my-2">Lihat pesanan</a>
                 </div>

@@ -46,7 +46,11 @@
                 <li class="list-group-item">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">Status</div>
-                        <h1 class="display-6 fw-bold">Pembayaran ditolak</h1>
+                        @if ($order->status === 1 && $order->payment->status === 1)
+                        <h1 class="display-6 text-success fw-bold">Berhasil dibayar</h1>
+                        @else
+                        <h1 class="display-6 text-danger fw-bold">Belum dibayar</h1>
+                        @endif
                     </div>
                 </li>
             </ol>
@@ -95,6 +99,11 @@
                 </tr>
             </tbody>
         </table>
+        @if ($order->payment)
+        <div class="p-3 pt-0 text-end">
+            <a href="{{route('pembayaran.show', $order->payment->id)}}" class="btn btn-primary">Cek Pembayaran</a>
+        </div>
+        @endif
     </div>
 </div>
 
