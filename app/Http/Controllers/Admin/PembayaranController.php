@@ -49,7 +49,9 @@ class PembayaranController extends Controller
      */
     public function show($id)
     {
-        //
+        $active = 'Pembayaran';
+        $payment = Payment::with('order')->find($id);
+        return view('admin.pembayaran.show', compact('active', 'payment'));
     }
 
     /**
