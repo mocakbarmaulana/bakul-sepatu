@@ -46,7 +46,7 @@ class MenuAdmin extends Component
             [
                 'label' => 'Pengguna',
                 'icon' => 'fas fa-user',
-                'link' => '#',
+                'link' => 'pengguna',
             ],
             [
                 'label' => 'Pesanan',
