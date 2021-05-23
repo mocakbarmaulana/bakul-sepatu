@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -74,7 +75,15 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $payment = Payment::find($id);
+        $payment->status = 1;
+        $payment->order->status = 1;
+        $payment->order->save();
+        $payment->save();
+
+
+        return redirect()->back()->with('success', 'Pembayaran telah dikonfirmasi');
+
     }
 
     /**
