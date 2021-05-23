@@ -46,36 +46,45 @@
             @endforelse
         </div>
         <div class="column2">
-            <h3>Cart Totals</h3>
-            <div class="row1">
-                <div class="col">
-                    <h5>Subtotals</h5>
-                    <h5>Shipping</h5>
-                </div>
-                <div class="col">
-                    <h5>IDR.{{number_format($subtotal)}}</h5>
-                    <div class="wrapper">
-                        <span>
-                            <input type="radio" name="shipping" id="" checked />Flat
-                            rate:$10
-                        </span>
-                        <span>
-                            <input type="radio" name="shipping" id="" />Free Shipping
-                            <br />
-                        </span>
-                        <span>
-                            <input type="radio" name="shipping" id="" />Local Pickup
-                        </span>
-                        <span>Shipping options <br />
-                            will be updated <br />during checkout.</span>
+            <form action="#" method="POST">
+                <h3>Cart Totals</h3>
+                <div class="row1">
+                    <div class="col">
+                        <h5>Subtotals</h5>
+                        <h5>Shipping</h5>
+                    </div>
+                    <div class="col">
+                        <h5>IDR.{{number_format($subtotal)}}</h5>
+                        <h5>
+                            *Free Shipping
+                            <br>
+                            <small style="opacity: 0.3">(semua produk selalu gratis ongkir)</small>
+                        </h5>
                     </div>
                 </div>
-            </div>
-            <h3>Totals &nbsp; &nbsp; $1000</h3>
-            <div class="buttons">
-                <a class="button-checkout" href="confirmation.html">Checkout</a>
-                <a class="cancel" href="../HTML/men.html">Continue Shopping</a>
-            </div>
+                <div class="row-box-user">
+                    <div class="input-box-user">
+                        <h5 class="title-input">Nama Penerima</h5>
+                        <input type="text" class="input-box">
+                    </div>
+                    <div class="input-box-user">
+                        <h5 class="title-input">Alamat Lengkap Penerima</h5>
+                        <textarea class="input-box" style="height: 100px"></textarea>
+                    </div>
+                    <div class="input-box-user">
+                        <h5 class="title-input">Nomor Handphone Penerima</h5>
+                        <input type="text" class="input-box">
+                    </div>
+                </div>
+                <div class="row-total">
+                    <h3>Total :</h3>
+                    <h3>IDR.{{number_format($subtotal)}}</h3>
+                </div>
+                <div class="buttons row-button">
+                    <button type="submit" class="button-checkout">Checkout</button>
+                    <a class="cancel" href="../HTML/men.html">Continue Shopping</a>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -132,6 +141,34 @@
     .qty-container span {
         display: inline-block;
         margin: 0 10px;
+    }
+
+    .input-box-user {
+        margin-bottom: 20px;
+    }
+
+    .title-input {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .input-box {
+        width: 100%;
+        margin: 0;
+        padding: 5px;
+        text-align: left;
+    }
+
+    .row-total {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    button.button-checkout {
+        cursor: pointer;
+        outline: none;
+        font-size: 1.2rem !important;
+        margin-bottom: 20px;
     }
 </style>
 @endsection

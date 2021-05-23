@@ -90,7 +90,8 @@ section > h1 {
     width: 10%;
 } */
 
-input {
+input,
+textarea {
     font-weight: bold;
     text-align: center;
     background: rgb(36, 35, 35);
