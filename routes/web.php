@@ -25,6 +25,7 @@ Route::prefix('administrator')->middleware('auth')->group(function(){
     Route::resource('kategori', 'App\http\Controllers\Admin\KategoriController');
     Route::resource('produk', 'App\http\Controllers\Admin\ProdukController');
     Route::resource('pesanan', 'App\http\Controllers\Admin\PesananController');
+    Route::resource('pembayaran', 'App\http\Controllers\Admin\PembayaranController');
 });
 
 // Frontend Route

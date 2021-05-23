@@ -56,7 +56,7 @@ class MenuAdmin extends Component
             [
                 'label' => 'Pembayaran',
                 'icon' => 'fas fa-cash-register',
-                'link' => '#',
+                'link' => 'pembayaran',
             ],
         ];
     }

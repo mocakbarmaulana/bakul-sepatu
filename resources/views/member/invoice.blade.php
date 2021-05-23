@@ -10,6 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
+    {{-- Icon bootstrap --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
     <title>Invoice</title>
 </head>
 
@@ -24,6 +27,14 @@
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             Terdapat error dalam memasukan field konfirmasi pembayaran
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    @endif
+
+    @if ($order->payment)
+    <div class="container">
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-info-circle"></i> Pembyaran sedang diproses oleh admin, silakan tunggu beberapa saat
         </div>
     </div>
     @endif
@@ -114,6 +125,12 @@
         @include('member.confirm-payment')
     </div>
 
+    {{-- <div class="invoice-payment-order">
+        @if ($order->payment)
+        <p>Kampret</p>
+        @endif
+    </div> --}}
+
     {{-- Modal Confirm Payment --}}
 
     <!-- Modal -->
@@ -129,6 +146,7 @@
                     <form action="{{route('member.setpayment')}}" class="form-payment" method="POST"
                         enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="order_id" value="{{$order->id}}">
                         <div class="row">
                             <div class="col d-flex flex-column">
                                 <div class="image-preview text-center">

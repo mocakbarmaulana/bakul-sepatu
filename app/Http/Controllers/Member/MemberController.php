@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Member;
 
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Whistlist;
 use Illuminate\Http\Request;
@@ -123,11 +125,26 @@ class MemberController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg|max:1048',
             'name' => 'required|string|max:100',
             'name_bank' => 'required|string|max:50',
-            'number_bank' => 'required|integer',
+            'number_bank' => 'required|numeric',
             'date_transfer' => 'required|date',
             'total' => 'required|integer',
+            'order_id' => 'required|integer',
         ]);
 
-        dd($request);
+        $imageName = Helper::uploadImage($request->image, null, 'payment');
+
+        Payment::create([
+            'order_id' => $request->order_id,
+            'name_transfer' => $request->name,
+            'name_bank' => $request->name_bank,
+            'number_bank' => $request->number_bank,
+            'date_transfer' => $request->date_transfer,
+            'total' => $request->total,
+            'image_transfer' => $imageName,
+            'status' => false,
+        ]);
+
+        return redirect()->back()->with('info', 'Bukti pembayaran berhasil dikirim, silakan tunggu beberapa saat untuk dilakukan pengecekan oleh admin kami');
+
     }
 }
