@@ -30,7 +30,7 @@
     @yield('konten')
 
     {{-- Footer --}}
-    @include('layouts.module-main.footer-me')
+    {{-- @include('layouts.module-main.footer-me') --}}
 
 
     {{-- js --}}

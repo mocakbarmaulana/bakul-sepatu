@@ -101,6 +101,14 @@ class MemberController extends Controller
 
     }
 
+    public function getOrder()
+    {
+        $id = auth('member')->id();
+        $orders = Order::where('member_id', $id)->get();
+
+        return view('member.order', compact('orders'));
+    }
+
     public function getInvoice($invoice)
     {
         $order = Order::with('order_details')->where('invoice', $invoice)->first();

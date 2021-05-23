@@ -11,6 +11,10 @@ class LoginMemberController extends Controller
 {
     public function getLogin()
     {
+        if(auth('member')->check()) {
+            return redirect()->route('home');
+        }
+
         return view('member.login');
     }
 
@@ -33,6 +37,11 @@ class LoginMemberController extends Controller
 
     public function getRegister()
     {
+
+        if(auth('member')->check()) {
+            return redirect()->route('home');
+        }
+
         return view('member.register');
     }
 

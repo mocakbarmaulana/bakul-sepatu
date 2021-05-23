@@ -44,14 +44,16 @@ Route::prefix('member')->group(function(){
     Route::get('/login', [App\Http\Controllers\Member\LoginMemberController::class, 'getLogin'])->name('member.login');
     Route::post('/register', [App\Http\Controllers\Member\LoginMemberController::class, 'setRegister'])->name('member.setregister');
     Route::post('/login', [App\Http\Controllers\Member\LoginMemberController::class, 'setLogin'])->name('member.setlogin');
+    Route::post('/logout', [App\Http\Controllers\Member\LoginMemberController::class, 'logout'])->name('member.logout');
 });
 
 
-// Membeer Router dengan middleware
+// Member Router dengan middleware
 Route::prefix('member')->middleware('member')->group(function(){
     Route::post('/whislist/add/{id}', [App\Http\Controllers\Member\MemberController::class, 'setWhislist'])->name('member.setwhislit');
     Route::post('/whislist/remove/{id}', [App\Http\Controllers\Member\MemberController::class, 'removeWhislist'])->name('member.rmwhislit');
     Route::post('/cart/add', [App\Http\Controllers\Member\CartController::class, 'addToCart'])->name('member.addtocart');
     Route::post('/checkout', [App\Http\Controllers\Member\MemberController::class, 'setCheckout'])->name('member.setcheckout');
     Route::get('/invoice/{invoice}', [App\Http\Controllers\Member\MemberController::class, 'getInvoice'])->name('member.invoice');
+    Route::get('/order', [App\Http\Controllers\Member\MemberController::class, 'getOrder'])->name('member.order');
 });

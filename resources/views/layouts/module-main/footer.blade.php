@@ -14,7 +14,22 @@
                     <a href="./HTML/refund-policy.html">Refund Policy</a>
                 </li>
                 <li>
+                    <a href="{{route('member.register')}}">Register</a>
+                </li>
+                <li>
+                    <a href="{{route('member.login')}}">Login</a>
+                </li>
+                <li>
                     <a href="{{route('menu')}}">Menu</a>
+                </li>
+                <li>
+                    <a href="{{route('member.order')}}">Pesanan</a>
+                </li>
+                <li>
+                    <form action="{{route('member.logout')}}" method="POST">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
                 </li>
             </ul>
         </div>
