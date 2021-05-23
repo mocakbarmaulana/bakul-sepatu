@@ -51,7 +51,10 @@ class PesananController extends Controller
      */
     public function show($id)
     {
-        //
+        $active = 'Pesanan';
+        $order = Order::find($id);
+
+        return view('admin.pesanan.show', compact('active', 'order'));
     }
 
     /**

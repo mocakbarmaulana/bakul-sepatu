@@ -25,7 +25,7 @@
                     <td>{{$order->customer_name}}</td>
                     <td class="text-center">IDR.{{number_format($order->subtotal)}}</td>
                     <td class="text-center">
-                        <a href="#" class="btn btn-sm btn-primary rounded">
+                        <a href="{{route('pesanan.show', $order->id)}}" class="btn btn-sm btn-primary rounded">
                             Detail
                         </a>
                     </td>

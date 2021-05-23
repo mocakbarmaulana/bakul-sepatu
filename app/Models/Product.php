@@ -21,4 +21,9 @@ class Product extends Model
     {
         return $this->hasMany(Whistlist::class);
     }
+
+    public function order_details()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
 }
