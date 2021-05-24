@@ -1,3 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.link-a {
+    color: #000;
+}
+
 .link-a:hover {
     color: #cb4335;
     transition: 0.7s ease;

@@ -2,12 +2,12 @@
     <nav class="navbar">
         <div class="brand">
             <img src="{{asset('asset/img/frontend/img-DS.png')}}" alt="img-brand" width="32px" height="32px" />
-            BakulSepatu
+            <a href="/" class="link-a" style="color: #555">BakulSepatu</a>
         </div>
         <div class="list-navbar">
             <ul>
                 <li>
-                    <a href="#" class="link-a">Home</a>
+                    <a href="/" class="link-a">Home</a>
                 </li>
                 <li>
                     <a href="#" class="link-a">Menu</a>
@@ -18,7 +18,7 @@
                         <a href="#" class="link-a">Pesanan</a>
                     </li>
                     <li>
-                        <a href="#" class="link-a"><i class="fas fa-shopping-cart"></i> Cart</a>
+                        <a href="{{route('showcart')}}" class="link-a"><i class="fas fa-shopping-cart"></i> Cart</a>
                     </li>
                     <li>
                         <a href="#" class="link-a btnLogout">Logout</a>
