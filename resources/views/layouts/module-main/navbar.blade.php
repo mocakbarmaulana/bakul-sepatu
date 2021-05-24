@@ -10,12 +10,12 @@
                     <a href="/" class="link-a">Home</a>
                 </li>
                 <li>
-                    <a href="#" class="link-a">Menu</a>
+                    <a href="{{route('menu')}}" class="link-a">Menu</a>
                 </li>
                 @if (auth('member')->check())
                 <div class="user-info">
                     <li>
-                        <a href="#" class="link-a">Pesanan</a>
+                        <a href="{{route('member.order')}}" class="link-a">Pesanan</a>
                     </li>
                     <li>
                         <a href="{{route('showcart')}}" class="link-a"><i class="fas fa-shopping-cart"></i> Cart</a>

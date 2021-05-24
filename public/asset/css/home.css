@@ -35,7 +35,7 @@
     justify-content: space-between;
 }
 
-/* Cards */
+/* Cards
 .cards {
     display: grid;
     grid-template-columns: repeat(4, 200px);
@@ -67,4 +67,4 @@
 .card:hover {
     filter: brightness(50%);
     transition: 0.5s ease;
-}
+} */
