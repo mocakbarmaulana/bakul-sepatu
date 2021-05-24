@@ -8,6 +8,9 @@
 
 @section('main-content')
 <!-- Detail Page -->
+<div class="info-flash">
+    @include('utils.flash-msg')
+</div>
 <section class="detail-page">
     <div class="image-detail">
         <img src="{{asset('storage/assets/images/products/'.$product->images)}}" alt="image-detail" />
@@ -16,6 +19,9 @@
         <h1 class="mb-2">{{$product->name}}</h1>
         <div class="mb-2 description">{!! $product->description !!}</div>
         <h2 class="mb-2">IDR.{{number_format($product->price)}}</h2>
+        @error('size')
+        <small class="text-danger">{{$message}}</small>
+        @enderror
         <div class="info-size">
             <h3 class="mb-2">Size :</h3>
             <select name="" class="mb-5" id="option-size">

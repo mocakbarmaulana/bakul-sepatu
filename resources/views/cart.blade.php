@@ -9,6 +9,7 @@
 @section('main-content')
 <!-- Cart Page -->
 <section class="cart-page">
+    @include('utils.flash-msg')
     <h1>Cart</h1>
     <div class="container-cart">
         <div class="items-info">

@@ -89,10 +89,10 @@ class MemberController extends Controller
 
             // Jika tidak terjadi error maka commit;
             DB::commit();
-
-            $carts = []; //Kosongkan carts
+            //Kosongkan carts
+            $carts = [];
             // simpan dalam cookie lagi.
-            $cookie = cookie('catering-in', json_encode($carts), 2880);
+            $cookie = cookie('bakulsepatu', json_encode($carts), 2880);
 
             return redirect()->route('member.invoice', $order->invoice)->cookie($cookie);
         } catch (\Throwable $th) {

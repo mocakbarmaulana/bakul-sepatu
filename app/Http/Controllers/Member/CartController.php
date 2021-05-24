@@ -88,7 +88,7 @@ class CartController extends Controller
 
         $cookie = cookie('bakulsepatu', json_encode($carts), 2880);
 
-        return redirect()->back()->cookie($cookie);
+        return redirect()->back()->cookie($cookie)->with('success', 'Item berhasil dihapus');
     }
 
     public function showCart()

@@ -4,6 +4,15 @@
     font-family: "Montserrat";
 }
 
+.info-flash {
+    padding: 10px 30px;
+    padding-bottom: 0;
+}
+
+.info-flash .alert {
+    margin-bottom: 0;
+}
+
 .detail-page > .image-detail {
     width: 45%;
     text-align: right;
