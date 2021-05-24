@@ -1,84 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@section('head')
+{{-- Mycss --}}
+<link rel="stylesheet" href="{{asset('asset/css/home.css')}}">
+<title>Home BakulSepatu</title>
+@endsection
 
-    {{-- FontAwesome --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        referrerpolicy="no-referrer" />
-
-    {{-- Google Font --}}
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
-
-    {{-- My css --}}
-    <link rel="stylesheet" href="{{asset('asset/css/style.css')}}" />
-    <link rel="stylesheet" href="{{asset('asset/css/navbar.css')}}" />
-    <link rel="stylesheet" href="{{asset('asset/css/preloader.css')}}" />
-
-    {{-- Jquery --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
-    {{-- Preloader js --}}
-    <script src="{{asset('asset/js/preloader.js')}}"></script>
-    <title>Home Bakul Sepatu</title>
-</head>
-
-<body>
-
-    <header id="home">
-        <nav>
-            <ul>
-                <li class="primary-nav">
-                    <img src=" {{asset('asset/img/frontend/img-DS.png')}}" alt="logo" />
-                    <a href="/">BakulSepatu</a>
-                </li>
-                <li class="secondary-nav">
-                    <a href="#">
-                        <i class="fas fa-shopping-cart"></i> CART
-                    </a>
-                </li>
-                <li class="secondary-nav"><a href="#">Sepatu Formal</a></li>
-                <li class="secondary-nav"><a href="#">Sepatu Slip On</a></li>
-                <li class="secondary-nav"><a href="#">Sepatu Olahraga</a></li>
-                <li class="secondary-nav"><a href="#">About</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="pxtext">
-            <span class="border">
-                Nike Air Jordan
-            </span>
-            <p><a href="HTML/men.html">Shop Now</a></p>
+@section('main-content')
+<!-- Jumbotron -->
+<section class="main-jumbotron">
+    <div class="info-jumbotron">
+        <h1>Nike Air Jordan</h1>
+        <a href="#" class="button">Shop Now</a>
+    </div>
+</section>
+<!-- Product List -->
+<div class="container">
+    <section class="menu-product">
+        <div class="product-title">
+            <h2>Produk :</h2>
+            <!-- <a href="#"><small>Lihat semuanya</small></a> -->
         </div>
-    </header>
-    <section>
-        <div class="row" style="width: 80%;margin: 0 auto;">
-            <h2>Best Sellers</h2>
-            <div class="row" style="width: 80%; margin: 0 auto;">
+        <div class="product-list">
+            <div class="cards">
                 @forelse ($products as $product)
-                <figure class="item">
-                    <a href="{{route('produkdetail', $product->id)}}">
-                        <img src="{{asset('storage/assets/images/products/'.$product->images)}}" alt="img-produk"
-                            height="125px" width="200px" class="img-produk-item" />
-                        <figcaption>{{$product->name}}</figcaption>
+                <div class="card">
+                    <a href="{{route("produkdetail", $product->id)}}">
+                        <img src="{{asset('storage/assets/images/products/'.$product->images)}}" alt="" width="100%" />
+                        <span>Nike Air Blue</span>
                     </a>
-                </figure>
+                </div>
                 @empty
-                <p>Tidak ada data</p>
+                <div style="text-align: center">
+                    <p>Tidak ada data</p>
+                </div>
                 @endforelse
             </div>
+        </div>
     </section>
-    @include('layouts.module-main.footer')
-
-    <style>
-        .img-produk-item {
-            object-fit: contain;
-            object-position: center
-        }
-    </style>
-</body>
-
-</html>
+</div>
+@endsection

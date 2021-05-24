@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="info-box">
-                    <p>Have a account ? <a href="{{route('login')}}">Login</a></p>
+                    <p>Have a account ? <a href="{{route('member.login')}}">Login</a></p>
                 </div>
             </form>
         </div>
