@@ -1,0 +1,63 @@
+.detail-page {
+    display: flex;
+    padding: 30px;
+    font-family: "Montserrat";
+}
+
+.detail-page > .image-detail {
+    width: 45%;
+    text-align: right;
+}
+
+.detail-page > .info-detail {
+    width: 55%;
+}
+
+.image-detail > img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 7px;
+}
+
+.detail-page > div {
+    margin: 20px;
+}
+
+.info-detail > h1 {
+    font-size: 3vw;
+}
+
+.info-detail > .description {
+    margin-right: 10%;
+    text-align: justify;
+    font-size: 1.5vw;
+    line-height: 1.3em;
+}
+
+.info-detail select {
+    font-size: 1vw;
+    width: auto;
+    margin-left: 1em;
+}
+
+.info-detail .info-size {
+    display: flex;
+    padding: 0;
+}
+
+.info-detail h2 {
+    font-size: 1.5vw;
+}
+
+.button-cart {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 16px;
+}
+
+.button-cart:hover {
+    background-color: white;
+    color: #000;
+    border: 1px solid black;
+}

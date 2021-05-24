@@ -18,7 +18,7 @@
                         <a href="#" class="link-a">Pesanan</a>
                     </li>
                     <li>
-                        <a href="#" class="link-a">Cart</a>
+                        <a href="#" class="link-a"><i class="fas fa-shopping-cart"></i> Cart</a>
                     </li>
                     <li>
                         <a href="#" class="link-a btnLogout">Logout</a>

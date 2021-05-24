@@ -1,87 +1,43 @@
 @extends('layouts.app')
 
 @section('head')
-
-{{-- My css --}}
-<link rel="stylesheet" href="{{asset('asset/css/info.css')}}" />
+{{-- Mycss --}}
+<link rel="stylesheet" href="{{asset('asset/css/detail.css')}}">
 <title>{{$product->name}}</title>
 @endsection
 
-@section('konten')
-<section>
-    <div class="row">
-        <div class="col1" style="text-align: center">
-            <img src="{{asset('storage/assets/images/products/'.$product->images)}}" alt="" srcset="" />
+@section('main-content')
+<!-- Detail Page -->
+<section class="detail-page">
+    <div class="image-detail">
+        <img src="{{asset('storage/assets/images/products/'.$product->images)}}" alt="image-detail" />
+    </div>
+    <div class="info-detail">
+        <h1 class="mb-2">{{$product->name}}</h1>
+        <div class="mb-2 description">{!! $product->description !!}</div>
+        <h2 class="mb-2">IDR.{{number_format($product->price)}}</h2>
+        <div class="info-size">
+            <h3 class="mb-2">Size :</h3>
+            <select name="" class="mb-5" id="option-size">
+                <option value="" selected disabled>
+                    Please select an option
+                </option>
+                @foreach ($size as $row)
+                <option value="{{$row}}">{{$row}}</option>
+                @endforeach
+            </select>
         </div>
-        <div class="col2">
-            <h1>{{$product->name}}</h1>
-            <p>{!! $product->description !!}</p>
-            <h2>IDR.{{number_format($product->price)}}</h2>
-
-            <span>
-                <h3>Size</h3>
-                <select name="size" id="option-size">
-                    <option value="" selected disabled>Please select an option</option>
-                    @foreach ($size as $row)
-                    <option value="{{$row}}">{{$row}}</option>
-                    @endforeach
-                </select>
-            </span>
-            <br />
-            <br />
-            <div class="box-button">
-                <form action="{{route('member.addtocart')}}" method="post">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                    <input type="hidden" name="qty" value="1">
-                    <input type="hidden" name="size" id="size-product">
-                    <button type="submit" class="button-cart button">Add to cart</button>
-                </form>
-                {{-- Whislist --}}
-                @if ($wishlist)
-                <form action="{{route('member.rmwhislit', $wishlist->id)}}" method="POST">
-                    @csrf
-                    <button type="submit" class="wishlist">Remove from wishlist</button>
-                </form>
-                @else
-                <form action="{{route('member.setwhislit', $product->id)}}" method="POST">
-                    @csrf
-                    <button type="submit" class="wishlist button">Add to wishlist</button>
-                </form>
-                @endif
-            </div>
+        <div class="button-box">
+            <form action="{{route('member.addtocart')}}" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                <input type="hidden" name="qty" value="1">
+                <input type="hidden" name="size" id="size-product">
+                <button type="submit" class="button button-cart">Add to cart</button>
+            </form>
         </div>
     </div>
 </section>
-<section class="video">
-    <h1 style="text-align: center">Video</h1>
-    <video src="{{asset('asset/img/frontend/videoplayback.mp4')}}" type="video/mp4" controls controlsList="nodownload"
-        poster="{{asset('asset/img/frontend/nike-zoom.gif')}}"
-        style="display:block; margin:30px auto; width: 70%"></video>
-</section>
-
-{{-- style --}}
-<style>
-    .box-button {
-        display: flex;
-        align-items: center;
-    }
-
-    .box-button form:nth-child(1) {
-        margin-right: 20px;
-    }
-
-    .button {
-        border: 0;
-        outline: 0;
-        cursor: pointer;
-    }
-
-    .wishlist {
-        background: transparent;
-        cursor: pointer;
-    }
-</style>
 @endsection
 
 @section('js')

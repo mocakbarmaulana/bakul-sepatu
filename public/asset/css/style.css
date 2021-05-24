@@ -1,25 +1,33 @@
 .link-a:hover {
-  color: #cb4335;
-  transition: 0.7s ease;
+    color: #cb4335;
+    transition: 0.7s ease;
 }
 
 .main-content {
-  min-height: calc(100vh - 370px);
-  margin-top: 70px;
-  background-color: #fff;
+    min-height: calc(100vh - 370px);
+    margin-top: 70px;
+    background-color: #fff;
 }
 
 .button {
-  background-color: #000;
-  color: white;
-  font-family: "Montserrat";
-  text-align: center;
-  border-radius: 16px;
-  padding: 10px;
-  text-decoration: none;
+    background-color: #000;
+    color: white;
+    font-family: "Montserrat";
+    text-align: center;
+    border-radius: 16px;
+    padding: 10px;
+    text-decoration: none;
 }
 
 .container {
-  width: 1200px;
-  margin: 0 auto;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.mb-2 {
+    margin-bottom: 20px;
+}
+
+.mb-5 {
+    margin-bottom: 50px;
 }
