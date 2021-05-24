@@ -113,7 +113,11 @@ class MemberController extends Controller
 
     public function getInvoice($invoice)
     {
-        $order = Order::with('order_details')->where('invoice', $invoice)->first();
+        $order = Order::with('order_details')->where('invoice', $invoice)->where('member_id', auth('member')->id())->first();
+
+        if(!$order) {
+            return redirect()->route('member.order');
+        }
 
         return view('member.invoice', compact('order'));
     }
