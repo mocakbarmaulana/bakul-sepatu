@@ -41,19 +41,7 @@
     background-color: blueviolet;
 }
 
-/* Typografi Spacing */
-.txt-l {
-    text-align: left !important;
-}
-
-.txt-r {
-    text-align: right;
-}
-
 /* Payment */
-.text-danger {
-    color: crimson;
-}
 
 .container-payment .row {
     display: flex;

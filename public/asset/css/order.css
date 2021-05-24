@@ -1,0 +1,17 @@
+.order-page {
+    padding: 30px 60px;
+    font-family: "Montserrat";
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+.btn-detail {
+    display: inline-block;
+}

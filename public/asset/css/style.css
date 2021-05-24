@@ -56,3 +56,24 @@ a {
 .mb-5 {
     margin-bottom: 50px;
 }
+
+/* Typografi Spacing */
+.txt-l {
+    text-align: left !important;
+}
+
+.txt-c {
+    text-align: center;
+}
+
+.txt-r {
+    text-align: right;
+}
+
+.text-danger {
+    color: crimson;
+}
+
+.text-success {
+    color: green;
+}
